@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'demo/index'
   # longer versioon 
   # match "demo/index", :to => "demo#index", :via => :get
+  get 'demo/hello'
 
   # new default route : 
   # This will lead to a right match as the pattern in url will be compared like this and treated as controller/action accordingly.

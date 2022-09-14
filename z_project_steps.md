@@ -173,3 +173,14 @@ rails generate controller example action1 action2
 ```
 2. This resulted in new routes creation.
 3. Tried URL http://localhost:3000/example/action2 
+
+
+---
+
+#### V13
+
+1. Created `hello.html.erb` in app/views/demo.
+2. Added a simple match route for it.
+3. Adding an action for each template is a good practise
+   1. Added `def hello` in the demo_controller. 
+4. Added explicit render methods in the demo_controller.
