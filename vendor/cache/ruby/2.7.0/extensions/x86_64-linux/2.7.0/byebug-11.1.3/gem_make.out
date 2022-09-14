@@ -1,0 +1,19 @@
+current directory: /home/meet/Desktop/ROR/simple_cms/vendor/cache/ruby/2.7.0/gems/byebug-11.1.3/ext/byebug
+/home/meet/.rbenv/versions/2.7.0/bin/ruby -I /home/meet/.rbenv/versions/2.7.0/lib/ruby/2.7.0 -r ./siteconf20220913-39805-1lo6uwb.rb extconf.rb
+creating Makefile
+
+current directory: /home/meet/Desktop/ROR/simple_cms/vendor/cache/ruby/2.7.0/gems/byebug-11.1.3/ext/byebug
+make "DESTDIR=" clean
+
+current directory: /home/meet/Desktop/ROR/simple_cms/vendor/cache/ruby/2.7.0/gems/byebug-11.1.3/ext/byebug
+make "DESTDIR="
+compiling breakpoint.c
+compiling byebug.c
+compiling context.c
+compiling locker.c
+compiling threads.c
+linking shared-object byebug/byebug.so
+
+current directory: /home/meet/Desktop/ROR/simple_cms/vendor/cache/ruby/2.7.0/gems/byebug-11.1.3/ext/byebug
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 byebug.so ./.gem.20220913-39805-1faafzb/byebug

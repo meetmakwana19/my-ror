@@ -1,0 +1,15 @@
+current directory: /home/meet/Desktop/ROR/simple_cms/vendor/cache/ruby/2.7.0/gems/bindex-0.8.1/ext/skiptrace
+/home/meet/.rbenv/versions/2.7.0/bin/ruby -I /home/meet/.rbenv/versions/2.7.0/lib/ruby/2.7.0 -r ./siteconf20220913-39805-8f34i9.rb extconf.rb
+creating Makefile
+
+current directory: /home/meet/Desktop/ROR/simple_cms/vendor/cache/ruby/2.7.0/gems/bindex-0.8.1/ext/skiptrace
+make "DESTDIR=" clean
+
+current directory: /home/meet/Desktop/ROR/simple_cms/vendor/cache/ruby/2.7.0/gems/bindex-0.8.1/ext/skiptrace
+make "DESTDIR="
+compiling cruby.c
+linking shared-object skiptrace/internal/cruby.so
+
+current directory: /home/meet/Desktop/ROR/simple_cms/vendor/cache/ruby/2.7.0/gems/bindex-0.8.1/ext/skiptrace
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 cruby.so ./.gem.20220913-39805-k3ytp4/skiptrace/internal

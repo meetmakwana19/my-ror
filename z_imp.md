@@ -1,0 +1,3 @@
+- Always run `bundle install` again after every modifications to the gemfile.
+- Out of MVC architecture, Views and Controllers must interact with Browser at each request. Models can be optional for once.
+- BVC is an essential triangle.
