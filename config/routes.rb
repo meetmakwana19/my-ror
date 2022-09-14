@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'example/action1'
+  get 'example/action2'
+  # match "example/action2", :to => "example#action1", :via => :get
+  
   # simple match route
   get 'demo/index'
   # longer versioon 
