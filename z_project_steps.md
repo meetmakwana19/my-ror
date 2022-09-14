@@ -161,3 +161,15 @@ Example a request for `GET/students/edit/52` means `StudentsController, edit act
    1. But for this new default route `  get ':controller(/:action(/:id))'` it'll work.
    2. This will lead to a right match as the pattern in url will be compared like this and treated as controller/action accordingly. 
    3. But wont use it as it may go away in futuru rails versions.
+
+
+---
+
+#### V12
+
+1. Created a controller with 2 actions via terminal.
+```
+rails generate controller example action1 action2
+```
+2. This resulted in new routes creation.
+3. Tried URL http://localhost:3000/example/action2 
