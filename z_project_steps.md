@@ -232,3 +232,44 @@ i.e. link text, link target
 4. Setting params as instance variable in controller will give us access to them in the template 
 5. Trying to get the parameters from url into template elements in the hello template.
 6.Learnt* : ALways render template at the end of action of method and after all the instance variables are defined.
+
+---
+
+#### V19 - INtro to DB :
+
+1. Most models in rails will be connected to DB tables 
+2. The process of defining models usually  starts with creating DB tables.
+
+---
+
+#### V20 - Create DB
+
+1. Not a good practise to use DB via the root user but to add a new user and grant permissions to it.
+
+---
+#### V21 - Migrations
+
+1. Will add tables in the DB by writing migrations in rails
+2. Migration is a set of DB instructions written in ruby which migrate the DB state from one state to another. 
+3. They describe DB changes
+4. COntains instructions of moving up and down the states.
+5. Maintains DB with application code
+6. Allows sharing between multiple programmers for sync mainting the same state for collab.
+7. Allows writing Ruby instead of SQL.
+8. Repeatable as from one PC to another PC the DB can be re-created with same config with the help of migrations.
+
+---
+
+#### V22 - Generate migrations
+
+1. Use CamelCase for the name
+```
+rails generate migration MigrationName
+```
+2. 
+```
+rails generate migration DoNothingYet
+```
+3. Name of the newly created migration will be started with a timestamp to keep uniqueness and sorting.  
+4. Migrations will be referred by timestamps and not names
+5. `up` & `down` methods in the migration file are mirror images of each other. If up is creating then down will be expected to delete.
