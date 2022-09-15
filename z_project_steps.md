@@ -184,3 +184,27 @@ rails generate controller example action1 action2
 3. Adding an action for each template is a good practise
    1. Added `def hello` in the demo_controller. 
 4. Added explicit render methods in the demo_controller.
+
+---
+
+#### V14 - Redirecting actions from the controller
+
+1. HTTP Redirect - Server sends a redirect request to the browser agrees to the request and the browser then requests the page to the server to get redirected to that new page.
+2. Addded `other_hello` action method in the demo_controller and in `routes.rb`
+
+---
+
+#### V15 - View templates (erb docs)
+
+- erb stands for embedded ruby.
+
+1. Wrote basic ruby in index view `index.html.erb`.
+
+---
+
+#### V16 - Instance variables
+
+- Used to give our template access to data gathered by the controller
+- Used to pass data from controller to the view
+
+1. Added an instance variable in demo_controller.rb

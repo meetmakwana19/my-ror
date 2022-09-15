@@ -17,5 +17,18 @@ class DemoController < ApplicationController #this is a ruby class inherited fro
     # render('index') #if this is used then at /hello endpoint, index template will be explicitly rendered
     render('hello')
 
+    # instance variable, always starting with @
+    @array = [1,2,3,4,5];
+
   end
+
+  def other_hello
+    # redirect_to(:controller => 'demo', :action => 'index')
+    redirect_to( :action => 'index')
+  end
+
+  def lynda 
+    redirect_to("https://lynda.com")
+  end
+
 end
