@@ -3,3 +3,18 @@
 <p>Find me in app/views/demo/hello.html.erb</p>
 
 <%= link_to('Index Page', :action => 'index')%>
+
+</br>
+</br>
+</br>
+ID param from URL : <%= @id %></br>
+ID param from URL : <%= params[:id] %></br>
+ID param from URL : <%= params['id'] %></br>
+
+</br>
+Page param from URL : <%= @page  %></br>
+Page param from URL : <%= @page.to_i + 1 %></br> 
+<%# converting page param to integer via to_i method as params are always strings %>
+Page param from URL : <%= params[:page] %></br>
+Page param from URL : <%= params['page'] %></br>
+Next Page : <%= params[:page].to_i + 1 %></br>

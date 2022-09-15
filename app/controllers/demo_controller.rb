@@ -14,12 +14,18 @@ class DemoController < ApplicationController #this is a ruby class inherited fro
   end
 
   def hello
-    # render('index') #if this is used then at /hello endpoint, index template will be explicitly rendered
-    render('hello')
-
+    
     # instance variable, always starting with @
-    @array = [1,2,3,4,5];
-
+    @array = [1,2,3,4,5]
+    
+    # setting params as instance variable in controller will give us access to them in the template 
+    @id = params['id'] #string param 
+    @page = params[:page] #symbol param
+    
+    # render('index') #if this is used then at /hello endpoint, index template will be explicitly rendered
+    # Learnt* : ALways render template at the end of action of method and after all the instance variables are defined.
+    render('hello')
+    
   end
 
   def other_hello

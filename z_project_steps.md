@@ -221,3 +221,14 @@ rails generate controller example action1 action2
 i.e. link text, link target
 
 2. `target` can be a simple text `"/demo/index"` or a ruby hash `<%= link_to('A Ruby Hash link to Hello', {:action => 'hello'})%> `
+
+---
+
+#### V18 - URL Parameters
+
+1. HTML link parameters start after `?` and are separated by `&`. `http://localhost:3000/demo/hello?id=20&page=5`
+2. Rials has ability to specify values based on 'symbols' or 'strings' interchangably using `params`
+3. Best place to add parameters to our link is to add them in the controller files.
+4. Setting params as instance variable in controller will give us access to them in the template 
+5. Trying to get the parameters from url into template elements in the hello template.
+6.Learnt* : ALways render template at the end of action of method and after all the instance variables are defined.

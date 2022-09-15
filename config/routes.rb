@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 
   # root route 
   # imp : pound sign is used to tell which is controller and which is action and not slash is used
-  # root 'demo#index'
+  root 'demo#index'
   # or
   # match "/", :to => "demo#index",  :via => :get
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
