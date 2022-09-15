@@ -208,3 +208,16 @@ rails generate controller example action1 action2
 - Used to pass data from controller to the view
 
 1. Added an instance variable in demo_controller.rb
+
+
+---
+
+#### V17 - Links
+
+1. Rails will write for a `link_to` method inside a erb tag like `<%= %>` which = sign as it is going to output an `a href` html tag.
+```
+<%= link_to(text, target) %>
+```
+i.e. link text, link target
+
+2. `target` can be a simple text `"/demo/index"` or a ruby hash `<%= link_to('A Ruby Hash link to Hello', {:action => 'hello'})%> `

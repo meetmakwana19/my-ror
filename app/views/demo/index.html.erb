@@ -25,11 +25,18 @@ end%>
 </br>
 <%end%>
 
-<% @array.each do |n| %>
-<%= n %>
+<%# @array.each do |n| %>
+<%#= n %>
+<%#end%>
 </br>
-<%end%>
 
 <%# ruby returns a whole function value%>
 </br>
 </br> 
+
+<a href="/demo/hello">Link to Hello page</a>
+</br> 
+
+<%= link_to('A Ruby Hash link to Hello', {:action => 'hello'})%> 
+</br> 
+
