@@ -273,3 +273,222 @@ rails generate migration DoNothingYet
 3. Name of the newly created migration will be started with a timestamp to keep uniqueness and sorting.  
 4. Migrations will be referred by timestamps and not names
 5. `up` & `down` methods in the migration file are mirror images of each other. If up is creating then down will be expected to delete.
+
+
+---
+
+#### V23 - Generate models
+
+1. Use CamelCase for the name
+```
+rails generate model ModelName
+```
+2. Creating one (write model name in singlular but rails will make table name as plural )
+```
+rails generate model User
+```
+3. Changinf the default `change` definition to up and down in `db/migrate/create_users.rb` file
+4. MIgrations try to be data independence i.e if mysql used varchar for a column then other DB can be adapted with pther datatype as per the requirement. So in the migration code we can write column for a 'string' datatype and rails will handle what the DB is suitable for a string datatype.
+5. Various datatypes used in rails for model definition :
+   1. binary
+   2. boolean 
+   3. date
+   4. datetime
+   5. decimal
+   6. float
+   7. integer -> becomes int
+   8. string -> translates to varchar for mysql
+   9. text -> becomes string
+   10. time
+6. Commonly used are string, integer and boolean
+7. Options for columns 
+```
+:limit => size of field/char/datatype
+
+:default => value
+
+:null => true/false
+
+:precision => number
+
+:scale => number
+
+```
+8. Rails will automatically add id to the table model and we dont need to mention it in the migrations.... if we dont want id in the schema then use `, :id => false` in the create_table definition
+
+
+---
+
+#### V24 : Run Migrations - in order for those changes to take effect
+
+1. Following commmand is used where migrate task is done for db which will be targetting our development DB. This command will run all the migrations which have not been run
+
+```
+rails db:migrate
+```
+
+This command gave me errors as I had did typos in the migration file.
+
+```
+rails aborted!
+SyntaxError: /home/meet/Desktop/ROR/simple_cms/db/migrate/20220917073114_create_users.rb:19: syntax error, unexpected '=', expecting `end'
+... t.string "last_name", :limit =. 50
+...                              ^
+/home/meet/Desktop/ROR/simple_cms/db/migrate/20220917073114_create_users.rb:20: syntax error, unexpected '=', expecting `end'
+      t.string "email", :null = false
+                              ^
+/home/meet/Desktop/ROR/simple_cms/db/migrate/20220917073114_create_users.rb:21: syntax error, unexpected '=', expecting `end'
+...  t.string "password", :limit = 16
+...                              ^
+/home/meet/Desktop/ROR/simple_cms/db/migrate/20220917073114_create_users.rb:35: syntax error, unexpected `end', expecting end-of-input
+/home/meet/Desktop/ROR/simple_cms/vendor/cache/ruby/2.7.0/gems/bootsnap-1.13.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:32:in `require'
+/home/meet/Desktop/ROR/simple_cms/vendor/cache/ruby/2.7.0/gems/bootsnap-1.13.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:32:in `require'
+```
+Successfully migrated both `DoNothingYet` and `CreateUsers` with lots of warnings of deprecation.
+2. Since rails v5, this rails was called `rake db:migrate`
+3. LOg onto mysql
+```
+mysql -u rails_user -p simple_cms_development
+```
+4. 
+```
+mysql> SHOW TABLES;
++----------------------------------+
+| Tables_in_simple_cms_development |
++----------------------------------+
+| ar_internal_metadata             |
+| schema_migrations                |
+| users                            |
++----------------------------------+
+3 rows in set (0.00 sec)
+```
+
+5. 
+```
+mysql> show fields from users;
++------------+--------------+------+-----+---------+----------------+
+| Field      | Type         | Null | Key | Default | Extra          |
++------------+--------------+------+-----+---------+----------------+
+| id         | bigint       | NO   | PRI | NULL    | auto_increment |
+| first_name | varchar(25)  | YES  |     | NULL    |                |
+| last_name  | varchar(50)  | YES  |     | NULL    |                |
+| email      | varchar(255) | NO   |     | NULL    |                |
+| password   | varchar(16)  | YES  |     | NULL    |                |
+| created_at | datetime     | NO   |     | NULL    |                |
+| updated_at | datetime     | NO   |     | NULL    |                |
++------------+--------------+------+-----+---------+----------------+
+7 rows in set (0.00 sec)
+```
+
+6. 
+```
+mysql> show fields from schema_migrations;
++---------+--------------+------+-----+---------+-------+
+| Field   | Type         | Null | Key | Default | Extra |
++---------+--------------+------+-----+---------+-------+
+| version | varchar(255) | NO   | PRI | NULL    |       |
++---------+--------------+------+-----+---------+-------+
+1 row in set (0.00 sec)
+```
+
+7. 
+```
+mysql> select * from schema_migrations;
++----------------+
+| version        |
++----------------+
+| 20220915171152 |
+| 20220917073114 |
++----------------+
+2 rows in set (0.00 sec)
+```
+The above shows the timestamps at which the migrations were created.
+```
+mysql> select * from users;
+Empty set (0.00 sec)
+```
+
+8. Upon running migrations, the `schema.rb` file also gets updated.
+
+9. To undo all the things done by `up` method, run the following to _**migrate down**_.
+```
+rails db:migrate VERSION=0
+```
+This will revert everything in the `schema.rb` file too and will make the version as 0.
+Reverting is done in reverse order to undo things.
+```
+== 20220917073114 CreateUsers: reverting ======================================
+-- drop_table(:users)
+   -> 0.0173s
+== 20220917073114 CreateUsers: reverted (0.0174s) =============================
+
+== 20220915171152 DoNothingYet: reverting =====================================
+== 20220915171152 DoNothingYet: reverted (0.0000s) ============================
+```
+
+10. Login back to mysql 
+```
+mysql -u rails_user -p simple_cms_development
+```
+
+11. Users table is gone now .
+```
+mysql> SHOW TABLES;
++----------------------------------+
+| Tables_in_simple_cms_development |
++----------------------------------+
+| ar_internal_metadata             |
+| schema_migrations                |
++----------------------------------+
+2 rows in set (0.00 sec)
+
+mysql> select * from users;
+ERROR 1146 (42S02): Table 'simple_cms_development.users' doesn't exist
+```
+
+12. To know the status of migrations
+```
+$ rails db:migrate:status
+
+database: simple_cms_development
+
+ Status   Migration ID    Migration Name
+--------------------------------------------------
+  down    20220915171152  Do nothing yet
+  down    20220917073114  Create users
+```
+
+13. To run a specific migration, user their migration id.
+```
+rails db:migrate VERSION=20220915171152
+```
+and the status for it will become `up`.
+
+14. _**Run Migrations**_
+
+```
+rails db:migrate
+```
+```
+rails db:migrate VERSION=0
+```
+```
+rails db:migrate VERSION=20161231235959
+```
+```
+rails db:migrate:status
+```
+
+always provide version number if specifying up or down method.
+```
+rails db:migrate:up VERSION=20161231235959
+```
+```
+rails db:migrate: down VERSION=20161231235959 
+```
+```
+rails db:migrate: redo VERSION=20161231235959
+```
+redo  means doing a down and then quick up.
+
+15. `rails db:migrate`
