@@ -279,6 +279,8 @@ rails generate migration DoNothingYet
 
 #### V23 - Generate models
 
+- When we generate a model, a migration file is generated along with it. 
+
 1. Use CamelCase for the name
 ```
 rails generate model ModelName
@@ -492,3 +494,66 @@ rails db:migrate: redo VERSION=20161231235959
 redo  means doing a down and then quick up.
 
 15. `rails db:migrate`
+
+---
+
+####  V24 - Migration Methods
+
+1. Table Migration Methods
+```
+create_table(table, options) do |t| 
+   ...columns... 
+end
+```
+```
+drop_table(table)
+```
+```
+rename_table(table, new_name)
+```
+
+2. Column Migration Methods
+```
+add_column (table, column, type, options) 
+```
+```
+remove_column (table, column) 
+```
+```
+rename_column (table, column, new_name) 
+```
+```
+change_column (table, column, type, options)
+```
+
+3. Index Migration Methods
+```
+add_index (table, column, options)
+```
+
+```
+remove_index(table, column)
+```
+
+4. Index Migration Method Options
+
+```
+:unique => true/false
+```
+
+```
+:name => "your_custom_name"
+```
+
+- Creating a new migration to alter users
+```
+rails generate migration AlterUsers
+```
+
+- `rails db:migrate` was getting several warnings with this like ```warning: Using the last argument as keyword parameters is deprecated; maybe ** should be added to the call```,  ```warning: The called method `new_column_definition' is defined here```, `The called method 'initialize' is defined here`, etc etc.
+   - SO to solve it, first deleted the migration by `rails d migration AlterUsers` and then again generated it and tried running it, it ran successfully but with many deprecation warnings.
+   - Ran it like 
+   ```
+   rails db:migrate VERSION=543587....
+   ```
+- tdown method of ALterUsers was not working so created a new migration called `DeletingBug` and pasted the down method's code in that migration file and it ran successfully upon running the `rails db:migrate` command.
