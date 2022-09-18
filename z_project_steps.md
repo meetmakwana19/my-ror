@@ -619,3 +619,66 @@ LIMIT 5
 1. `ApplicationRecord` is inherited from `ActiveRecord` and it'll have all code which is common to all the models.
 2. `ActiveRecord::Base` is the core part of rails where we are adding behaviours to our class.
    1. So `user.rb` is able to do alot of things by using `ApplicationRecord` which is inherited from `ActiveRecord::Base`
+
+
+--- 
+
+#### V32 - Rials console 
+
+1. `development` can be replaced by any of your environment like test/production
+```
+rails console development
+```
+The following assumes development environment by default
+```
+rails console
+```
+```
+rails c
+```
+
+2. `irb` - interactive ruby console.
+```
+irb
+```
+O/p:
+```
+$ irb
+irb(main):001:0> 1+1
+=> 2
+irb(main):002:0> "Hello".upcase
+=> "HELLO"
+irb(main):003:0> "Hello".upcase.reverse
+=> "OLLEH"
+irb(main):004:0> exit
+```
+
+3. Starting rails console, it'll start irb with rails environment and sources.
+```
+rails console
+```
+
+4. Can create new instance of a model class.
+```
+subject = SUbject.new
+```
+and play with it 
+```
+subject.name = "Test
+```
+```
+subject.name
+```
+- BUt various warnings came too 
+```
+irb(main):001:0> subject = Subject.new
+   (0.5ms)  SET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483
+/home/meet/Desktop/ROR/simple_cms/vendor/cache/ruby/2.7.0/gems/activemodel-5.2.8.1/lib/active_model/type/integer.rb:13: warning: Using the last argument as keyword parameters is deprecated; maybe ** should be added to the call
+/home/meet/Desktop/ROR/simple_cms/vendor/cache/ruby/2.7.0/gems/activemodel-5.2.8.1/lib/active_model/type/value.rb:8: warning: The called method `initialize' is defined here
+
+irb(main):002:0> subject.name = "Test"
+
+irb(main):003:0> subject.name 
+=> "Test"
+```
+It's a good way to test the model instead of bring controller, view into the picture to interact with the models.
