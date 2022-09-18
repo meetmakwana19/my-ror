@@ -557,3 +557,19 @@ rails generate migration AlterUsers
    rails db:migrate VERSION=543587....
    ```
 - tdown method of ALterUsers was not working so created a new migration called `DeletingBug` and pasted the down method's code in that migration file and it ran successfully upon running the `rails db:migrate` command.
+
+---
+
+#### V28 - Exercise 
+
+1. Generate model which will generate migration file along with it. 
+`
+rails generate model Subject
+`
+`
+rails generate model Page
+`
+`
+rails generate model Section
+`
+2. Wrote code in their migration files and ran the command for up and down migrations.
