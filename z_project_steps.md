@@ -283,7 +283,7 @@ rails generate migration DoNothingYet
 
 1. Use CamelCase for the name
 ```
-rails generate model ModelName
+rails generate model SingularName
 ```
 2. Creating one (write model name in singlular but rails will make table name as plural )
 ```
@@ -573,3 +573,49 @@ rails generate model Page
 rails generate model Section
 `
 2. Wrote code in their migration files and ran the command for up and down migrations.
+
+---
+
+####  V29 - `ActiveRecord` and `ActiveRelation`
+
+-- They are part of the rails framework wwhich power up the models.
+
+
+- `ActiveRecord` refers to rails implementation of active record pattern.
+- The active record pattern allows us to manipulate and retrieve data as objects and not as static rows  
+- `ActiveRecord` makes our object intelligent. These objects 
+   - Understand the structure of DB table
+   - Contain data from table rows
+   - Has code and Knows how to CRUD rows using that code
+   - THese objects can be manipulated and saved back to the DB with few simple commands
+
+</br>
+
+- `ActiveRelation` is also known is as 'ARel'.
+- Object Oriented representation of relational algebra 
+- Simplifies the generation of complex DB queries 
+- Allows small queries are inter-linked chainable.
+- Handles complex joins and aggregations and makes sure it uses efficient SQL.
+- Handles timing of query execution. Queries are nnot executed untill needed.
+- ARel is going to be used heavily by ActiveRecord for  queries for managing the the relationship amongst our objects. 
+- ActiveRecord sits on top of ARel.
+- ARel stays behind the scenes
+- ActiveRelation Example
+```
+#simplified version using related ARel
+users = User.where(:first_name => "Kevin") 
+users = users.order("last_name ASC").limit (5)
+
+#Translated complex SQL by rails
+SELECT users.* FROM users
+WHERE users.first_name = 'Kevin'
+ORDER BY users.last_name ASC
+LIMIT 5
+```
+
+---
+####  V30 - Model Naming
+
+1. `ApplicationRecord` is inherited from `ActiveRecord` and it'll have all code which is common to all the models.
+2. `ActiveRecord::Base` is the core part of rails where we are adding behaviours to our class.
+   1. So `user.rb` is able to do alot of things by using `ApplicationRecord` which is inherited from `ActiveRecord::Base`
