@@ -825,3 +825,46 @@ subject = Subject.find(2)
 ```
 subject.update_attributes(:name => "Next subject", :visible => true)
 ```
+
+---
+
+#### V35 - Delete records
+
+- 2 Steps process - `Find/destroy`
+   - Find record
+   - Destroy
+
+Delete and destroy are diff. Delete brings some rails features so better to stick to destroy.
+
+1. Logon to `rails console`
+2. Frrst creating a dummy
+```
+Subject.create(:name => "BAd subject")
+```
+3. Find the one to delete
+```
+subject = Subject.find(3)
+```
+4. Delete it
+```
+subject.destroy
+```
+o/p:
+```
+(0.2ms)  BEGIN
+  Subject Destroy (0.5ms)  DELETE FROM `subjects` WHERE `subjects`.`id` = 3
+   (5.6ms)  COMMIT
+=> #<Subject id: 3, name: "BAd subject", position: nil, visible: false, created_at: "2022-09-20 15:59:25", updated_at: "2022-09-20 15:59:25">
+```
+5. Deletion freezes the object for it to no longer be modified.
+```
+irb(main):045:0> subject.name = "zyf"
+Traceback (most recent call last):
+        1: from (irb):45
+RuntimeError (Can't modify frozen hash)
+```
+BUt it is accessible for inspection and viewing 
+```
+irb(main):046:0> subject.name
+=> "BAd subject"
+```
