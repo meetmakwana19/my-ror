@@ -868,3 +868,57 @@ BUt it is accessible for inspection and viewing
 irb(main):046:0> subject.name
 => "BAd subject"
 ```
+
+--- 
+
+####  V36 - Find records
+
+1. Primary key finder
+```
+Subject.find(2)
+```
+2. Dynamic key finder - Lets searching by diff attributes
+```
+Subject.find_by_id(2)
+Subject.find_by_name("Initail subject")
+```
+They dont throw error. They either throw the object or `nil`. It depends on us what to infer from that nil.
+3. Find all
+```
+Subject.all
+```
+Returns an array of objects 
+```
+=> #<ActiveRecord::Relation [#<Subject id: 1, name: "Initial subject", position: 1, visible: true, created_at: "2022-09-20 14:39:08", updated_at: "2022-09-20 15:09:22">, #<Subject id: 2, name: "Next subject", position: 2, visible: true, created_at: "2022-09-20 14:47:48", updated_at: "2022-09-20 15:23:24">]>
+```
+4. Find first/last
+```
+Subject.first
+```
+```
+Subject.last
+```
+
+5. Finding all 
+
+```
+Subject.all`
+```
+
+or
+
+```
+subjects = Subject.all
+```
+
+```
+irb(main):051:0> subjects = Subject.all
+irb(main):052:1* subjects.each do |subject|
+irb(main):053:1*   puts subject.name
+irb(main):054:0> end
+  Subject Load (0.5ms)  SELECT `subjects`.* FROM `subjects`
+Initial subject
+Next subject
+Third subject
+=> [#<Subject id: 1, name: "Initial subject", position: 1, visible: true, created_at: "2022-09-20 14:39:08", updated_at: "2022-09-20 15:09:22">, #<Subject id: 2, name: "Next subject", position: 2, visible: true, created_at: "2022-09-20 14:47:48", updated_at: "2022-09-20 15:23:24">, #<Subject id: 4, name: "Third subject", position: nil, visible: false, created_at: "2022-09-20 16:37:19", updated_at: "2022-09-20 16:37:19">]
+```
