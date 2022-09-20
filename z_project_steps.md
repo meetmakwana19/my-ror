@@ -682,3 +682,89 @@ irb(main):003:0> subject.name
 => "Test"
 ```
 It's a good way to test the model instead of bring controller, view into the picture to interact with the models.
+
+
+---
+
+####  V33 - Create records in DB
+
+- 2 techniques 
+
+1. new/save (3 step process)
+   1. Instantiate object (create new object of the class or instance of the class) 
+   2. Set values (on that instance)
+   3. Save
+2. `Create` - can do all above 3 steps in one line
+
+~~~
+~~~
+
+
+1. Start rails console 
+2. Create a new instance of the class `Subject`
+```
+subject = Subject.new
+```
+
+- `ActiveRecord` has number of methods to make these objects smart
+1. `new_record?`
+```
+irb(main):003:0> subject.new_record?
+=> true
+```
+returns true means it's not been saved to DB yet
+2. Setting name 
+```
+irb(main):004:0> subject.name = "First name"
+irb(main):005:0> subject.name
+=> "First name"
+```
+but it isn't saved into the DB yet
+3. Faster way to write the above in one command
+```
+Subject.new(:name => "FIrst name", :position => 1, :visible => true)
+```
+4. Still `subject.new_record?` is true so let's save it to DB.
+```
+subject.save
+```
+O/P:
+```
+(0.5ms)  BEGIN
+  Subject Create (5.1ms)  INSERT INTO `subjects` (`name`, `position`, `visible`, `created_at`, `updated_at`) VALUES ('FIrst name', 1, TRUE, '2022-09-20 14:39:08', '2022-09-20 14:39:08')
+   (5.4ms)  COMMIT
+=> true
+```
+5. Now `subject.new_record?` is false as we saved the new record to DB.
+6. `id` is the primary key which is auto assigned everytime. created_at and updated_at are also auto assigned.
+```
+irb(main):013:0> subject.id
+=> 1
+irb(main):014:0> subject.created_at
+=> Tue, 20 Sep 2022 14:39:08 UTC +00:00
+irb(main):015:0> subject.updated_at
+=> Tue, 20 Sep 2022 14:39:08 UTC +00:00
+```
+7. This saving pattern is good for controllers as we can do like the following.
+``` 
+irb(main):016:1* if subject.save
+irb(main):017:1*   puts "Saved"
+irb(main):018:1* else
+irb(main):019:1*   puts "NOt saved"
+irb(main):020:0> end
+   (0.4ms)  BEGIN
+   (0.2ms)  COMMIT
+Saved
+=> nil
+``` 
+8. Creating another subject oject by overriding the other one.
+```
+subject = Subject.create(:name => "Second subject", :position => 2)
+```
+o/p:
+```
+(0.2ms)  BEGIN
+  Subject Create (0.5ms)  INSERT INTO `subjects` (`name`, `position`, `created_at`, `updated_at`) VALUES ('Second subject', 2, '2022-09-20 14:47:48', '2022-09-20 14:47:48')
+   (11.1ms)  COMMIT
+```
+9. new_record? was true so saved it by `subject.save`.
