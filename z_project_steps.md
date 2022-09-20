@@ -768,3 +768,60 @@ o/p:
    (11.1ms)  COMMIT
 ```
 9. new_record? was true so saved it by `subject.save`.
+
+
+---
+
+####  V34 - Update records 
+
+- 2 Techniques 
+   - Set the attributes at a time and then save
+   - Set the attributes all at once and save
+
+- Find/save technique
+   1. Find record
+   2. Set values
+   3. Save
+
+- Find/update_attributes
+   1. Find record
+   2. Set values and save both in one step
+
+1. Find the record using id (overriding the previous subject object)
+``` 
+subject = Subject.find(1)
+``` 
+2. Updating name attribute
+```
+irb(main):032:0> subject.name = "Initial subject"
+irb(main):033:0> subject.name
+=> "Initial subject"
+```
+3. Save it.
+```
+subject.save
+```
+It gave ouput of Update SQL statement
+```
+(0.3ms)  BEGIN
+  Subject Update (0.7ms)  UPDATE `subjects` SET `name` = 'Initial subject', `updated_at` = '2022-09-20 15:09:22' WHERE `subjects`.`id` = 1
+   (9.8ms)  COMMIT
+=> true
+```
+4. Updated_at time changes too.
+```
+irb(main):035:0> subject.created_at
+=> Tue, 20 Sep 2022 14:39:08 UTC +00:00
+irb(main):037:0> subject.updated_at
+=> Tue, 20 Sep 2022 15:09:22 UTC +00:00
+```
+
+- - 2nd Technique 
+1. Find record
+```
+subject = Subject.find(2)
+```
+2. Use the method update_attributes
+```
+subject.update_attributes(:name => "Next subject", :visible => true)
+```
