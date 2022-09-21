@@ -10,7 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_17_174540) do
+ActiveRecord::Schema.define(version: 2022_09_17_174612) do
+
+  create_table "pages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.integer "subject_id"
+    t.string "name"
+    t.string "permalink"
+    t.integer "position"
+    t.boolean "visible", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["permalink"], name: "index_pages_on_permalink"
+    t.index ["subject_id"], name: "index_pages_on_subject_id"
+  end
+
+  create_table "sections", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.integer "page_id"
+    t.string "name"
+    t.integer "position"
+    t.boolean "visible", default: false
+    t.string "content_type"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["page_id"], name: "index_sections_on_page_id"
+  end
 
   create_table "subjects", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
