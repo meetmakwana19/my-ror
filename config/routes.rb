@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  get 'subjects/index'
+  get 'subjects/show'
+  get 'subjects/new'
+  get 'subjects/edit'
+  get 'subjects/delete'
   get 'example/action1'
   get 'example/action2'
   # match "example/action2", :to => "example#action1", :via => :get
