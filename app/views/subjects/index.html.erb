@@ -22,7 +22,9 @@
             <td class="center"><%= subject.visible ? "Yes" : "No" %></td>
             <td class="center"><%= subject.pages.size %></td>
             <td class="actions">
-                <%= link_to("Show", "#", :action => "action show")%>
+                <%# link_to("Show", "subjects/#{subject.id}", :action => "action show") %>
+                <%# link_to("Show", {:controller => "subjects", :action => "show", :id =? subject.id}, :action => "action show") %>
+                <%= link_to("Show", subject_path(subject), :action => "action show")%>
                 <%= link_to("Edit", "#", :action => "action edit")%>
                 <%= link_to("Delete", "#", :action => "action delete")%>
             </td>
