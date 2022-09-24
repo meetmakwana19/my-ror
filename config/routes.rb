@@ -1,11 +1,29 @@
 Rails.application.routes.draw do
-  get 'subjects/index'
-  get 'subjects/show'
-  get 'subjects/new'
-  get 'subjects/edit'
-  get 'subjects/delete'
-  get 'example/action1'
-  get 'example/action2'
+
+  # root route 
+  # imp : pound sign is used to tell which is controller and which is action and not slash is used
+  root 'demo#index'
+  # or
+  # match "/", :to => "demo#index",  :via => :get
+
+  # following are by default added resourceful routes
+  # get 'subjects/index'
+  # get 'subjects/show'
+  # get 'subjects/new'
+  # get 'subjects/edit'
+  # get 'subjects/delete'
+  # get 'example/action1'
+  # get 'example/action2'
+
+  # resourceful routes
+  resources :subjects do
+    # adding a code block of `do` to get the 8th route of DELETE which is not be default adding by rails in the SubjectsController
+    member do #member routes
+      get :delete
+    end
+  end
+
+
   # match "example/action2", :to => "example#action1", :via => :get
   
   # simple match route
@@ -22,10 +40,5 @@ Rails.application.routes.draw do
   # get ':controller(/:action(/:id))'
 
 
-  # root route 
-  # imp : pound sign is used to tell which is controller and which is action and not slash is used
-  root 'demo#index'
-  # or
-  # match "/", :to => "demo#index",  :via => :get
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
