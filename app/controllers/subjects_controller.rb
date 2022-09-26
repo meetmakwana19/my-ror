@@ -31,9 +31,23 @@ class SubjectsController < ApplicationController
   end
 
   def edit
+    @subject = Subject.find(params[:id])
   end
-
+  
   def update
+    # • Find the object using form parameters
+    @subject = Subject.find(params[:id])
+    # • Update the object
+    # update_attributeswill need a hash of the new subject object so using params[:subject] to get that hash value. But update_attributes will mass assign the values which can be an issue
+    # Therefore using the whitelisted values from subject_params
+    # if @subject.update_attributes(params[:subject])
+    if @subject.update_attributes(subject_params)
+      # • If save succeeds, redirect to the show action
+      redirect_to(subject_path(@subject))
+    else
+      # • If save fails, redisplay the form so user can fix problems
+      render("edit") #will go to the `def edit` with the already created @subject in this method so that the fields are auto-filled
+    end
   end
 
   def delete
