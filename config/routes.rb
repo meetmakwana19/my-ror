@@ -6,12 +6,23 @@ Rails.application.routes.draw do
   # or
   # match "/", :to => "demo#index",  :via => :get
 
-  # following are by default added resourceful routes
+  # following are by default added match routes, commented them to use resourceful routes.
   # get 'subjects/index'
   # get 'subjects/show'
   # get 'subjects/new'
   # get 'subjects/edit'
   # get 'subjects/delete'
+  # get 'sections/index'
+  # get 'sections/show'
+  # get 'sections/new'
+  # get 'sections/edit'
+  # get 'sections/delete'
+  # get 'pages/index'
+  # get 'pages/show'
+  # get 'pages/new'
+  # get 'pages/edit'
+  # get 'pages/delete'
+
   # get 'example/action1'
   # get 'example/action2'
 
@@ -22,6 +33,17 @@ Rails.application.routes.draw do
       get :delete
     end
   end
+  resources :pages do
+    member do 
+      get :delete
+    end
+  end
+  resources :sections do
+    member do 
+      get :delete
+    end
+  end
+  
 
 
   # match "example/action2", :to => "example#action1", :via => :get
