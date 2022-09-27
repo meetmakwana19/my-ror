@@ -1,4 +1,7 @@
 class SubjectsController < ApplicationController
+
+  layout "admin"
+   
   def index
     # FInd subjects and assign them to instance variable so that the view template can access them
     # @subjects = Subject.all
