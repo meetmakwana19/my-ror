@@ -25,7 +25,8 @@
             <td><%= section.page_id %></td>
             <td><%= section.name %></td>
             <td><%= section.position %></td>
-            <td class="center"><%= section.visible ? "Yes" : "No" %></td>
+            <%# <td class="center"><% section.visible ? "Yes" : "No" %></td> %>
+            <td class="center"><%= status_tag(section.visible) %></td>
             <td><%= section.content_type %></td>
             <td><%= section.content %></td>
             <td class="actions">
