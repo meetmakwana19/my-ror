@@ -37,4 +37,7 @@ class DemoController < ApplicationController #this is a ruby class inherited fro
     redirect_to("https://lynda.com")
   end
 
+  def escape_output
+  end
+
 end

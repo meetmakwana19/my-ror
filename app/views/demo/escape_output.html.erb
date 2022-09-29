@@ -1,0 +1,11 @@
+<%evil_string = "<script>alert('Gotcha !'');</script>" %>
+<%good_string = "<strong> Welcome to my page </strong>" %>
+
+<%# h is there by default like the following
+ %>
+<%# h evil_string %>
+<%# raw evil_string %>
+<%= evil_string.html_safe %>
+<br/>
+<%# raw good_string%>
+<% good_string.html_safe %>
