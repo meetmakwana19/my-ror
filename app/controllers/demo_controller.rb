@@ -1,6 +1,6 @@
 class DemoController < ApplicationController #this is a ruby class inherited from ApplicationController
 
-  layout false 
+  layout 'application' 
   
   def index #this is a ruby method, also called as an ACTION which renders a view
     # by default if nothing is specified in index method then rails tells it to use index template i.e. app/views/demo/index.html.erb
