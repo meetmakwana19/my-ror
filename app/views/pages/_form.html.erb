@@ -2,7 +2,8 @@
     <tr>
         <th>subject_id</th>
         <td>
-            <%= f.text_field(:subject_id) %>
+            <%# f.text_field(:subject_id) %>
+            <%= f.select(:subject_id, @subjects.map {|s| [s.name, s.id]}) %>
         </td>
     </tr>
     <tr>
@@ -20,7 +21,8 @@
     </tr>
     <th>Position</th>
     <td>
-        <%= f.text_field(:position) %>
+        <%# f.text_field(:position) %>
+        <%= f.select(:position, 1..@page_count) %>
     </td>
     </tr>
     <tr>

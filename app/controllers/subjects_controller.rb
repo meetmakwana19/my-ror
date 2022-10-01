@@ -18,8 +18,9 @@ class SubjectsController < ApplicationController
   
   def new
     @subject = Subject.new({:name => "Default"})
+    @subject_count = Subject.count + 1 #adding a new one now so +1
   end
-
+  
   def create
     # • Instantiate a new object using form parameters
     @subject = Subject.new(subject_params)
@@ -29,13 +30,15 @@ class SubjectsController < ApplicationController
       flash[:notice] = "Subject created succcessfully"
       redirect_to(subjects_path)
     else
+      @subject_count = Subject.count + 1 #adding a new one now so +1
       # • If save fails, redisplay the form so user can fix problems
-      render("new") #will go to the `def new` with the already created @subject in this method so that the fields are auto-filled
+      render("new") #will render `new` view template and wont go to the def new method. Fields will be autofilled due to the paarams saved in the @subject object
     end
   end
 
   def edit
     @subject = Subject.find(params[:id])
+    @subject_count = Subject.count
   end
   
   def update
@@ -50,8 +53,9 @@ class SubjectsController < ApplicationController
       flash[:notice] = "Subject updated succcessfully"
       redirect_to(subject_path(@subject))
     else
+      @subject_count = Subject.count
       # • If save fails, redisplay the form so user can fix problems
-      render("edit") #will go to the `def edit` with the already created @subject in this method so that the fields are auto-filled
+      render("edit") #will render `edit` view template and wont go to the def edit method. Fields will be autofilled due to the paarams saved in the @subject object
     end
   end
 
