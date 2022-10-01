@@ -5,12 +5,13 @@
 <div class="subjects index">
     <h2>Subjects</h2>
 
+    <%= image_tag('plus_sign.png', :size => '20x20', :alt => '+')%>
     <%# link_to("Add new subject", "subjects/new", :class => "action new") %>
     <%= link_to("Add new subject", new_subject_path, :class => "action new") %>
     
     <table class="listing" summary="Subject list">
         <tr class="header">
-            <th>#</th>
+            <th></th>
             <th>Subjects</th>
             <th>Visible</th>
             <th>Pages</th>
