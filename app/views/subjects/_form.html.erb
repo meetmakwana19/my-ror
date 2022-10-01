@@ -9,6 +9,8 @@
   </tr>
   <tr>
     <th>Visible</th>
-    <td><%= f.text_field(:visible) %></td>
+    <%# f.text_field(:visible) %>
+    <%# adding form helper  %>
+    <td><%= f.check_box(:visible) %></td>
   </tr>
 </table>

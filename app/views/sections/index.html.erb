@@ -9,7 +9,7 @@
     
     <table class="listing" summary="section list">
         <tr class="header">
-            <th>#</th>
+            <th>&nbsp;&nbsp;&nbsp;#&nbsp;</th>
             <th>Page_id</th>
             <th>name</th>
             <th>Position</th>
@@ -21,11 +21,13 @@
 
         <% @sections.each do |section| %>
         <tr>
-            <td><%= section.id %></td>
+            <td><%= section.id %>  </td>
             <td><%= section.page_id %></td>
             <td><%= section.name %></td>
             <td><%= section.position %></td>
-            <%# <td class="center"><% section.visible ? "Yes" : "No" %></td> %>
+            <%# <td class="center"> %>
+                <%# section.visible ? "Yes" : "No" %>
+            <%# </td> %>
             <td class="center"><%= status_tag(section.visible) %></td>
             <td><%= section.content_type %></td>
             <td><%= section.content %></td>
