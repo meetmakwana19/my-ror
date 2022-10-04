@@ -157,3 +157,36 @@ This will first remove any empty object files that cause corruption of the repos
 
 PS. This answer suggests you have a remote copy of your Git repository somewhere (e.g. on GitHub) and the broken repository is the local repository that is tied to the remote repository which is still intact. If that is not the case, then do not attempt to fix it the way I recommend.
 
+---
+### V78 - Prevent Cross-site request forgery 
+
+• "CSRF" for short
+
+• Type of attack on a website
+
+• Exploits user's currently logged-in state to perform
+actions which require authentication
+```
+<img src = "http://bank.com?amt=1500000">
+```
+Eg. leaving bank's website logged in and then going to other site which may be malicious and upin clicking any wrong element over there might send a request to bank's server. This is called cross site request forgery.
+
+_Prevent CSRF :_
+
+• Require user authentication
+
+• Regularly log out inactive users
+
+• GET requests should be read-only
+
+• Actions that expect POST requests should only respond to POST requests.
+
+1. Rails gives **Autheenticity Token** and generates it and puts in the hidden field of every form.
+   1. The token is stored in the session file to  compare the tokens when rails recieve the form and it gets authenticated.
+   2. All this is done automatically by the rails.
+   3. `ApplicationController` inherits it from an imp `ActionController`.
+      1. Added this line as it wasn't there.
+      ```
+      protect_from_forgery with: :exception
+      ```
+2. If working with  Javascipt/Ajax requests then need to put `<%= csrf_meta_tag %>` in the `<head>` o the html doc which will add some JS so that the JS requests can have same access to Autheenticity tokens and forgery protection like regular HTML post requests do.
