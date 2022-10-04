@@ -13,4 +13,6 @@ class Subject < ApplicationRecord
     # making one-to-one associations
     # has_one :page #dont forget to add belongs_to in page.rb
     has_many :pages #dont forget to add belongs_to in page.rb
+
+    validates_presence_of :name
 end
