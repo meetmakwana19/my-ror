@@ -15,7 +15,8 @@ ActiveRecord::Schema.define(version: 2022_09_23_125132) do
   create_table "admin_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "first_name", limit: 25
     t.string "last_name", limit: 50
-    t.string "user_name", limit: 25
+    t.string "username", limit: 25
+    t.string "email", limit: 100
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

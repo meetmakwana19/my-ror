@@ -12,4 +12,15 @@ class Page < ApplicationRecord
     scope :sorted, lambda { order("position ASC") }
     scope :newest_first, lambda { order("created_at DESC") }
 
+    validates_presence_of :name
+    validates_length_of :name, :maximum => 255
+
+    # using presence_of with length_of to ensure there's no space in permalink. It's disallowing permalink.
+    validates_presence_of :permalink
+    validates_length_of :permalink, :within => 3..255 #within range
+
+    # unique permalink for every page.
+    validates_uniqueness_of :permalink 
+
+
 end

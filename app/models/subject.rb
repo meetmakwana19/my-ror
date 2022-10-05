@@ -15,4 +15,7 @@ class Subject < ApplicationRecord
     has_many :pages #dont forget to add belongs_to in page.rb
 
     validates_presence_of :name
+    # validates_presence_of encountering spaces will consider it blank
+    validates_length_of :name, :maximum => 255 #255 is the mysql varchar limit.
+    # space is considered as part of the length 
 end
