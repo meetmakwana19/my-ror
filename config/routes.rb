@@ -6,6 +6,15 @@ Rails.application.routes.draw do
   # or
   # match "/", :to => "demo#index",  :via => :get
 
+  # not using resourceful routes here as there's no model for this work and simple routes can work 
+  get 'acess/menu' #index
+  get 'acess/login' #new
+  post 'access/attempt_login' #create
+  get 'access/logout' #destroy
+  # if the user is logged in then send to menu which will be controlled by the controller due to access control on the menu
+  get 'admin', :to => 'acess#menu'
+
+
   # following are by default added match routes, commented them to use resourceful routes.
   # get 'subjects/index'
   # get 'subjects/show'
