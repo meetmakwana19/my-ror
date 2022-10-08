@@ -3,6 +3,7 @@ class SubjectsController < ApplicationController
   layout "admin"
    
   def index
+    logger.debug("*****Testing the logger.*****")
     # FInd subjects and assign them to instance variable so that the view template can access them
     # @subjects = Subject.all
     # will return all the subjects as an array and store it in the instance variable @subjects
