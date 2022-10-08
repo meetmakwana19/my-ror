@@ -1,5 +1,8 @@
 class AdminUser < ApplicationRecord
-    # m:n associations
+
+    has_secure_password
+
+    # m:n associationss
     # has_and_belongs_to_many :pages, optional: true
     # has_and_belongs_to_many :pages, required: false
     has_and_belongs_to_many :pages
