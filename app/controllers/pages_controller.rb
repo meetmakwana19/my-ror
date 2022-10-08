@@ -2,6 +2,8 @@ class PagesController < ApplicationController
 
   layout "admin"
 
+  before_action :confirm_logged_in
+  
   # by default this controller filter will be applied to methods but putting an only option.
   before_action :find_subjects, :only => [:new, :create, :edit, :update]
   # so before these methods, the find_subjects instance variable be set for all those methods.
