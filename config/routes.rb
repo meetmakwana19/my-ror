@@ -53,8 +53,16 @@ Rails.application.routes.draw do
     end
   end
   
-
-
+  # get 'admin_users/index'
+  # get 'admin_users/new'
+  # get 'admin_users/edit'
+  # get 'admin_users/delete'
+  resources :admin_users, :except => [:show] do
+    member do
+      get :delete
+    end
+  end
+  
   # match "example/action2", :to => "example#action1", :via => :get
   
   # simple match route
