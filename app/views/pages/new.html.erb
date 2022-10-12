@@ -6,7 +6,7 @@
 </br>
 </br>
 
-<%= link_to("<< Back to List", pages_path, :class => "back-link")%>
+<%= link_to("<< Back to List", pages_path(subject_id => @subject.id), :class => "back-link")%>
 
 <div class="pages new">
   <h2>Create page</h2>
@@ -14,7 +14,8 @@
   <%# form_for helper for dynamic form for pages edit/new action so no need to
   specify the method and url It's smart enough to know that the @page object is
   new/saved. %> <%# form_for(@page, :url => pages_path, :method => "post") do
-  |f| %> <%= form_for(@page) do |f|%> <%= render(:partial => "form", :locals =>
+  |f| %> 
+  <%= form_for(@page, :url => pages_path(subject_id => @subject.id)) do |f|%> <%= render(:partial => "form", :locals =>
   {:f => f})%>
 
   <div class="form-buttons"><%= f.submit("Create page")%></div>

@@ -5,14 +5,17 @@
 
 </br>
 </br>
-<%= link_to("<< Back to menu", admin_path, :class => 'back-link')%> <%
-@page_title = " | All Pages" %>
+<%= link_to("<< Back to menu", admin_path, :class => 'back-link')%> 
+</br>
+<%= link_to("<< Back to Subjects", subjects_path, :class => 'back-link')%> 
+
+<% @page_title = " | All Pages" %>
 
 <div class="pages index">
   <h2>Pages list</h2>
 
   <%# link_to("Add new page", "pages/new", :class => "action new") %> <%=
-  link_to("Add new page", new_page_path, :class => "action new") %>
+  link_to("Add new page", new_page_path(:subject_id => @subject.id), :class => "action new") %>
 
   <table class="listing" summary="page list">
     <tr class="header">
@@ -46,9 +49,9 @@
         <%# link_to("Show", "pages/#{page.id}", :action => "action show") %> <%#
         link_to("Show", {:controller => "pages", :action => "show", :id =?
         page.id}, :action => "action show") %> <%= link_to("Show",
-        page_path(page), :action => "action show")%> <%= link_to("Edit",
-        edit_page_path(page), :action => "action edit")%> <%= link_to("Delete",
-        delete_page_path(page), :action => "action delete")%>
+        page_path(page, :subject_id => @subject.id), :action => "action show")%> <%= link_to("Edit",
+        edit_page_path(page, :subject_id => @subject.id), :action => "action edit")%> <%= link_to("Delete",
+        delete_page_path(page, :subject_id => @subject.id), :action => "action delete")%>
       </td>
     </tr>
     <%end%>

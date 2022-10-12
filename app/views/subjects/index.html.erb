@@ -35,11 +35,11 @@
       <td class="actions">
         <%# link_to("Show", "subjects/#{subject.id}", :action => "action show")
         %> <%# link_to("Show", {:controller => "subjects", :action => "show",
-        :id =? subject.id}, :action => "action show") %> <%= link_to("Show",
-        subject_path(subject), :action => "action show")%> <%= link_to("Edit",
-        edit_subject_path(subject), :action => "action edit")%> <%=
-        link_to("Delete", delete_subject_path(subject), :action => "action
-        delete")%>
+        :id =? subject.id}, :action => "action show") %> 
+        <%= link_to("View Pages", pages_path(:subject_id => subject.id), :action => "action show")%> 
+        <%= link_to("Show", subject_path(subject), :action => "action show")%> 
+        <%= link_to("Edit", edit_subject_path(subject), :action => "action edit")%> 
+        <%= link_to("Delete", delete_subject_path(subject), :action => "action delete")%>
       </td>
     </tr>
     <%end%>
