@@ -9,6 +9,12 @@
       <h1>Simple CMS App</h1>
     </div>
     <div id="main">
+
+      <div id="navigation">
+      <%# rendering the partial for navigation  %>
+        <%= render(:partial => 'layouts/navigation', :locals => { :subjects => @subjects} ) %>
+      </div>
+
       <div id="content">
         <!-- before yield -->
         <%= yield %>
