@@ -1,41 +1,47 @@
-<h1>Subjects#index</h1>
-<p>Find me in app/views/subjects/index.html.erb</p>
+<div class="info">
+  <h3>Subjects#index</h3>
+  <p>Find me in app/views/subjects/index.html.erb</p>
+</div>
 
-<%= link_to("<< Back to menu", admin_path, :class => 'back-link')%>
-
-<% @page_title = " | All subjects" %>
+</br></br>
+<%= link_to("<< Back to menu", admin_path, :class => 'back-link')%> <%
+@page_title = " | All subjects" %>
 
 <div class="subjects index">
-    <h2>Subjects</h2>
+  <h2>Subjects</h2>
 
-    <%= image_tag('plus_sign.png', :size => '20x20', :alt => '+')%>
-    <%# link_to("Add new subject", "subjects/new", :class => "action new") %>
-    <%= link_to("Add new subject", new_subject_path, :class => "action new") %>
-    
-    <table class="listing" summary="Subject list">
-        <tr class="header">
-            <th></th>
-            <th>Subjects</th>
-            <th>Visible</th>
-            <th>Pages</th>
-            <th>Actions</th>
-        </tr>
+  <%= image_tag('plus_sign.png', :size => '20x20', :alt => '+')%> <%#
+  link_to("Add new subject", "subjects/new", :class => "action new") %> <%=
+  link_to("Add new subject", new_subject_path, :class => "action new") %>
 
-        <% @subjects.each do |subject| %>
-        <tr>
-            <td><%= subject.position %></td>
-            <td><%= subject.name %></td>
-            <%# <td class="center">subject.visible ? "Yes" : "No"</td> %>
-            <td class="center"><%= status_tag(subject.visible)%></td> 
-            <td class="center"><%= subject.pages.size %></td>
-            <td class="actions">
-                <%# link_to("Show", "subjects/#{subject.id}", :action => "action show") %>
-                <%# link_to("Show", {:controller => "subjects", :action => "show", :id =? subject.id}, :action => "action show") %>
-                <%= link_to("Show", subject_path(subject), :action => "action show")%>
-                <%= link_to("Edit", edit_subject_path(subject), :action => "action edit")%>
-                <%= link_to("Delete", delete_subject_path(subject), :action => "action delete")%>
-            </td>
-        </tr>
-        <%end%>
-    </table>
-</div> 
+  <table class="listing" summary="Subject list">
+    <tr class="header">
+      <th></th>
+      <th>Subjects</th>
+      <th>Visible</th>
+      <th>Pages</th>
+      <th>Actions</th>
+    </tr>
+
+    <% @subjects.each do |subject| %>
+    <tr>
+      <td><%= subject.position %></td>
+      <td><%= subject.name %></td>
+      <%#
+      <td class="center">subject.visible ? "Yes" : "No"</td>
+      %>
+      <td class="center"><%= status_tag(subject.visible)%></td>
+      <td class="center"><%= subject.pages.size %></td>
+      <td class="actions">
+        <%# link_to("Show", "subjects/#{subject.id}", :action => "action show")
+        %> <%# link_to("Show", {:controller => "subjects", :action => "show",
+        :id =? subject.id}, :action => "action show") %> <%= link_to("Show",
+        subject_path(subject), :action => "action show")%> <%= link_to("Edit",
+        edit_subject_path(subject), :action => "action edit")%> <%=
+        link_to("Delete", delete_subject_path(subject), :action => "action
+        delete")%>
+      </td>
+    </tr>
+    <%end%>
+  </table>
+</div>

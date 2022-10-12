@@ -1,19 +1,20 @@
-<h1>Sections#edit</h1>
-<p>Find me in app/views/sections/edit.html.erb</p>
+<div class="info">
+  <h3>Sections#edit</h3>
+  <p>Find me in app/views/sections/edit.html.erb</p>
+</div>
 
+</br></br>
 <%= link_to("<< Back to List", sections_path, :class => "back-link")%>
 
 <div class="sections edit">
-    <h2>Update section</h2>
+  <h2>Update section</h2>
 
-    <%# form_for helper for dynamic form for sections edit/new action so no need to specify the method and url It's smart enough to know that the @section object is new/saved. %>
-    <%# form_for(@section, :url => sections_path, :method => "patch") do |f| %>
-    <%= form_for(@section) do |f|%>
+  <%# form_for helper for dynamic form for sections edit/new action so no need
+  to specify the method and url It's smart enough to know that the @section
+  object is new/saved. %> <%# form_for(@section, :url => sections_path, :method
+  => "patch") do |f| %> <%= form_for(@section) do |f|%> <%= render(:partial =>
+  "form", :locals => {:f => f})%>
 
-        <%= render(:partial => "form", :locals => {:f => f})%>
-
-        <div class="form-buttons">
-            <%= f.submit("Update section")%>
-        </div>
-    <% end %>
+  <div class="form-buttons"><%= f.submit("Update section")%></div>
+  <% end %>
 </div>

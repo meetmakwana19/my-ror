@@ -1,21 +1,24 @@
-<h1>Pages#delete</h1>
-<p>Find me in app/views/pages/delete.html.erb</p>
+<div class="info">
+  <h3>Pages#delete</h3>
+  <p>Find me in app/views/pages/delete.html.erb</p>
+</div>
 
+</br>
+</br>
 <%= link_to("<< Back to List", pages_path, :class => "back-link")%>
 
 <div class="pages delete">
-    <h2>Delete page</h2>
+  <h2>Delete page</h2>
 
-    <%# form_for(@page, :url => pages_path, :method => "delete") do |f| %>
-    <%= form_for(@page, :method => "delete") do |f|%>
-    <%# passing delete method is necessary here as by default edit will be considered by rails for the saved object and not delete. %>
-        <p>Are you sure you want to permanently delete this page ? </p>
+  <%# form_for(@page, :url => pages_path, :method => "delete") do |f| %> <%=
+  form_for(@page, :method => "delete") do |f|%> <%# passing delete method is
+  necessary here as by default edit will be considered by rails for the saved
+  object and not delete. %>
+  <p>Are you sure you want to permanently delete this page ?</p>
 
-        <p class="reference-name"><%= f.object.name %></p>
-        <%# other way was to write @page.name to get the name. %>
+  <p class="reference-name"><%= f.object.name %></p>
+  <%# other way was to write @page.name to get the name. %>
 
-        <div class="form-buttons">
-            <%= f.submit("Delete  page")%>
-        </div>
-    <% end %>
+  <div class="form-buttons"><%= f.submit("Delete page")%></div>
+  <% end %>
 </div>

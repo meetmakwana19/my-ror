@@ -1,19 +1,21 @@
-<h1>Pages#edit</h1>
-<p>Find me in app/views/pages/edit.html.erb</p>
+<div class="info">
+  <h3>Pages#edit</h3>
+  <p>Find me in app/views/pages/edit.html.erb</p>
+</div>
 
+</br>
+</br>
 <%= link_to("<< Back to List", pages_path, :class => "back-link")%>
 
 <div class="pages edit">
-    <h2>Update page</h2>
+  <h2>Update page</h2>
 
-    <%# form_for helper for dynamic form for pages edit/new action so no need to specify the method and url It's smart enough to know that the @page object is new/saved. %>
-    <%# form_for(@page, :url => pages_path, :method => "patch") do |f| %>
-    <%= form_for(@page) do |f|%>
+  <%# form_for helper for dynamic form for pages edit/new action so no need to
+  specify the method and url It's smart enough to know that the @page object is
+  new/saved. %> <%# form_for(@page, :url => pages_path, :method => "patch") do
+  |f| %> <%= form_for(@page) do |f|%> <%= render(:partial => "form", :locals =>
+  {:f => f})%>
 
-        <%= render(:partial => "form", :locals => {:f => f})%>
-
-        <div class="form-buttons">
-            <%= f.submit("Update page")%>
-        </div>
-    <% end %>
+  <div class="form-buttons"><%= f.submit("Update page")%></div>
+  <% end %>
 </div>

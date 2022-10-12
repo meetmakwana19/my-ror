@@ -139,3 +139,15 @@ a:hover {
 #content h2 {
   color: $light_brown;
 }
+
+.info {
+  color: rgb(67, 67, 67);
+  font-style: italic;
+  border: 1px solid black;
+  display: inline-block;
+  padding: 10px;
+  h3,
+  p {
+    margin: 0;
+  }
+}

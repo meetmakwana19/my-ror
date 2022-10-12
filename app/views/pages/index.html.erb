@@ -1,49 +1,56 @@
-<h1>Pages#index</h1>
-<p>Find me in app/views/pages/index.html.erb</p>
+<div class="info">
+  <h3>Pages#index</h3>
+  <p>Find me in app/views/pages/index.html.erb</p>
+</div>
 
-<%= link_to("<< Back to menu", admin_path, :class => 'back-link')%>
-<% @page_title = " | All Pages" %>
+</br>
+</br>
+<%= link_to("<< Back to menu", admin_path, :class => 'back-link')%> <%
+@page_title = " | All Pages" %>
 
 <div class="pages index">
-    <h2>pages</h2>
+  <h2>Pages list</h2>
 
-    <%# link_to("Add new page", "pages/new", :class => "action new") %>
-    <%= link_to("Add new page", new_page_path, :class => "action new") %>
-    
-    <table class="listing" summary="page list">
-        <tr class="header">
-            <th>#</th>
-            <th>Subject_id</th>
-            <th>name</th>
-            <th>permalink</th>
-            <th>Position</th>
-            <th>Visible</th>
-            <%# <th>NO. of sections</th> %>
-            <th>Actions</th>
-        </tr>
+  <%# link_to("Add new page", "pages/new", :class => "action new") %> <%=
+  link_to("Add new page", new_page_path, :class => "action new") %>
 
-        <% @pages.each do |page| %>
-        <tr>
-            <td><%= page.id %></td>
-            <td><%= page.subject_id %></td>
-            <td><%= page.name %></td>
-            <td><%= page.permalink %></td>
-            <td><%= page.position %></td>
-            <%# <td class="center"> %>
-                <%# page.visible ? "Yes" : "No"%>
-            <%# </td>  %>
-            <td class="center"><%= status_tag(page.visible) %></td>
-            <%# <td class="center"> %>
-                <%# page.sections.size %>
-            <%# </td> %>
-            <td class="actions">
-                <%# link_to("Show", "pages/#{page.id}", :action => "action show") %>
-                <%# link_to("Show", {:controller => "pages", :action => "show", :id =? page.id}, :action => "action show") %>
-                <%= link_to("Show", page_path(page), :action => "action show")%>
-                <%= link_to("Edit", edit_page_path(page), :action => "action edit")%>
-                <%= link_to("Delete", delete_page_path(page), :action => "action delete")%>
-            </td>
-        </tr>
-        <%end%>
-    </table>
-</div> 
+  <table class="listing" summary="page list">
+    <tr class="header">
+      <th>#</th>
+      <th>Subject_id</th>
+      <th>name</th>
+      <th>permalink</th>
+      <th>Position</th>
+      <th>Visible</th>
+      <%#
+      <th>NO. of sections</th>
+      %>
+      <th>Actions</th>
+    </tr>
+
+    <% @pages.each do |page| %>
+    <tr>
+      <td><%= page.id %></td>
+      <td><%= page.subject_id %></td>
+      <td><%= page.name %></td>
+      <td><%= page.permalink %></td>
+      <td><%= page.position %></td>
+      <%#
+      <td class="center">%> <%# page.visible ? "Yes" : "No"%> <%#</td>
+      %>
+      <td class="center"><%= status_tag(page.visible) %></td>
+      <%#
+      <td class="center">%> <%# page.sections.size %> <%#</td>
+      %>
+      <td class="actions">
+        <%# link_to("Show", "pages/#{page.id}", :action => "action show") %> <%#
+        link_to("Show", {:controller => "pages", :action => "show", :id =?
+        page.id}, :action => "action show") %> <%= link_to("Show",
+        page_path(page), :action => "action show")%> <%= link_to("Edit",
+        edit_page_path(page), :action => "action edit")%> <%= link_to("Delete",
+        delete_page_path(page), :action => "action delete")%>
+      </td>
+    </tr>
+    <%end%>
+  </table>
+</div>

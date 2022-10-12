@@ -1,47 +1,53 @@
-<h1>Sections#index</h1>
-<p>Find me in app/views/sections/index.html.erb</p>
+<div class="info">
+  <h3>Sections#index</h3>
+  <p>Find me in app/views/sections/index.html.erb</p>
+</div>
 
-<%= link_to("<< Back to menu", admin_path, :class => 'back-link')%>
-<% @page_title = " | All section" %>
+</br>
+</br>
+<%= link_to("<< Back to menu", admin_path, :class => 'back-link')%> <%
+@page_title = " | All section" %>
 
 <div class="sections index">
-    <h2>Sections</h2>
+  <h2>Sections</h2>
 
-    <%# link_to("Add new section", "sections/new", :class => "action new") %>
-    <%= link_to("Add new section", new_section_path, :class => "action new") %>
-    
-    <table class="listing" summary="section list">
-        <tr class="header">
-            <th>&nbsp;&nbsp;&nbsp;#&nbsp;</th>
-            <th>Page_id</th>
-            <th>name</th>
-            <th>Position</th>
-            <th>Visible</th>
-            <th>Content type</th>
-            <th>Content</th>
-            <th>Actions</th>
-        </tr>
+  <%# link_to("Add new section", "sections/new", :class => "action new") %> <%=
+  link_to("Add new section", new_section_path, :class => "action new") %>
 
-        <% @sections.each do |section| %>
-        <tr>
-            <td><%= section.id %>  </td>
-            <td><%= section.page_id %></td>
-            <td><%= section.name %></td>
-            <td><%= section.position %></td>
-            <%# <td class="center"> %>
-                <%# section.visible ? "Yes" : "No" %>
-            <%# </td> %>
-            <td class="center"><%= status_tag(section.visible) %></td>
-            <td><%= section.content_type %></td>
-            <td><%= section.content %></td>
-            <td class="actions">
-                <%# link_to("Show", "sections/#{section.id}", :action => "action show") %>
-                <%# link_to("Show", {:controller => "sections", :action => "show", :id =? section.id}, :action => "action show") %>
-                <%= link_to("Show", section_path(section), :action => "action show")%>
-                <%= link_to("Edit", edit_section_path(section), :action => "action edit")%>
-                <%= link_to("Delete", delete_section_path(section), :action => "action delete")%>
-            </td>
-        </tr>
-        <%end%>
-    </table>
-</div> 
+  <table class="listing" summary="section list">
+    <tr class="header">
+      <th>&nbsp;&nbsp;&nbsp;#&nbsp;</th>
+      <th>Page_id</th>
+      <th>name</th>
+      <th>Position</th>
+      <th>Visible</th>
+      <th>Content type</th>
+      <th>Content</th>
+      <th>Actions</th>
+    </tr>
+
+    <% @sections.each do |section| %>
+    <tr>
+      <td><%= section.id %></td>
+      <td><%= section.page_id %></td>
+      <td><%= section.name %></td>
+      <td><%= section.position %></td>
+      <%#
+      <td class="center">%> <%# section.visible ? "Yes" : "No" %> <%#</td>
+      %>
+      <td class="center"><%= status_tag(section.visible) %></td>
+      <td><%= section.content_type %></td>
+      <td><%= section.content %></td>
+      <td class="actions">
+        <%# link_to("Show", "sections/#{section.id}", :action => "action show")
+        %> <%# link_to("Show", {:controller => "sections", :action => "show",
+        :id =? section.id}, :action => "action show") %> <%= link_to("Show",
+        section_path(section), :action => "action show")%> <%= link_to("Edit",
+        edit_section_path(section), :action => "action edit")%> <%=
+        link_to("Delete", delete_section_path(section), :action => "action
+        delete")%>
+      </td>
+    </tr>
+    <%end%>
+  </table>
+</div>

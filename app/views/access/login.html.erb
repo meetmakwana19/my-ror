@@ -1,25 +1,28 @@
-<h1>Acess#login</h1>
-<p>Find me in app/views/acess/login.html.erb</p>
+<div class="info">
+  <h3>Acess#login</h3>
+  <p>Find me in app/views/acess/login.html.erb</p>
+</div>
 
 <% @page_title = "Admin Login" %>
 
 <div class="login">
-<%# form_tag is very basic and generates only HTML formand is not smart like form_for %>
-    <%= form_tag(access_attempt_login_path, :method => :post) do %>
-    <table>
-        <tr>
-        <%# not using object oriented form_for that's y no `f` is there for the objects but simple tags %>
-            <td><%= label_tag(:username) %></td>
-            <td><%= text_field_tag(:username, params[:username]) %></td>
-        </tr>
-        <tr>
-            <td><%= label_tag(:password)%></td>
-            <td><%= password_field_tag(:password)%></td>
-        </tr>
-        <tr>
-            <td>&nbsp;</td>
-            <td><%= submit_tag("Log in") %></td>
-        </tr>
-    </table>
-    <% end %>
+  <%# form_tag is very basic and generates only HTML formand is not smart like
+  form_for %> <%= form_tag(access_attempt_login_path, :method => :post) do %>
+  <table>
+    <tr>
+      <%# not using object oriented form_for that's y no `f` is there for the
+      objects but simple tags %>
+      <td><%= label_tag(:username) %></td>
+      <td><%= text_field_tag(:username, params[:username]) %></td>
+    </tr>
+    <tr>
+      <td><%= label_tag(:password)%></td>
+      <td><%= password_field_tag(:password)%></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><%= submit_tag("Log in") %></td>
+    </tr>
+  </table>
+  <% end %>
 </div>
