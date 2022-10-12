@@ -4,6 +4,7 @@ class Page < ApplicationRecord
     # optional is false by default 
     belongs_to :subject, {:optional => true} 
 
+    has_many :sections
     has_and_belongs_to_many :admin_users
 
     # making a scope with name "visible"

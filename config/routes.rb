@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
 
+  root :to => 'public#index'
+  # get 'public/index'
+  get 'show/:permalink', :to => 'public#show'
+  # get 'public/show'
+
   # root route 
-  # imp : pound sign is used to tell which is controller and which is action and not slash is used
-  root 'demo#index'
+  # imp : spound sign is used to tell which is controller and which is action and not slash is used
+  # root 'demo#index'
   # or
   # match "/", :to => "demo#index",  :via => :get
 

@@ -1,0 +1,24 @@
+<h3>Public#show</h3>
+<p>Find me in app/views/public/show.html.erb</p>
+
+<% @page_title = @page.name %>
+
+<h2><%= @page.name %></h2>
+
+<%# findig and searching the visible sections in a sorted manner %>
+<% @page.sections.visible.sorted.each do |section| %>
+    <div class="section">
+    <%# if section's content type is HTML then  %>
+        <% case section.content_type %>
+        <% when 'HTML' %>
+            <%# sanitising the section content and allowing only 'strong', 'em', 'a' tags %>
+            <%# calling raw as already sanitize is done and dont want those tags to be escaped. %>
+            <%= raw(sanitize(section.content, :tags => ['strong', 'em', 'a'])) %>
+        <% when 'text' %>
+            <%# <p><%= section.content </p> %> 
+            <%# no need of p tag so adding a helper  %>
+            <%# simple_format will add those p tags and turn the line breaks into </br> tags %>
+            <%= simple_format(section.content)%>
+        <% end %>
+    </div>
+<% end %>
