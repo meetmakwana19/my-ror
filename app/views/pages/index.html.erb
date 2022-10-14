@@ -47,11 +47,12 @@
       %>
       <td class="actions">
         <%# link_to("Show", "pages/#{page.id}", :action => "action show") %> <%#
-        link_to("Show", {:controller => "pages", :action => "show", :id =?
-        page.id}, :action => "action show") %> <%= link_to("Show",
-        page_path(page, :subject_id => @subject.id), :action => "action show")%> <%= link_to("Edit",
-        edit_page_path(page, :subject_id => @subject.id), :action => "action edit")%> <%= link_to("Delete",
-        delete_page_path(page, :subject_id => @subject.id), :action => "action delete")%>
+        link_to("Show", {:controller => "pages", :action => "show", @:id =?
+        page.id}, :action => "aWctioWn shoWw") %> 
+        <%= link_to("View Sections", sections_path(:page_id => page.id), :action => "action show")%> 
+        <%= link_to("Show", page_path(page, :subject_id => @subject.id), :action => "action show")%> 
+        <%= link_to("Edit",edit_page_path(page, :subject_id => @subject.id), :action => "action edit")%> 
+        <%= link_to("Delete",delete_page_path(page, :subject_id => @subject.id), :action => "action delete") %>
       </td>
     </tr>
     <%end%>

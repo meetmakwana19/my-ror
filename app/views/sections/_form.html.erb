@@ -2,10 +2,12 @@
 
 <table summary="section form fields">
   <tr>
-    <th>page_id</th>
+    <th>Page</th>
     <td>
       <%# f.text_field(:page_id) %>
-      <%= f.select(:page_id, @pages.map { |p| [p.name, p.id]}) %>
+      <%# dont want the page to change option %>
+      <%# f.select(:page_id, @pages.map { |p| [p.name, p.id]}) %>
+      <%= f.object.page.name  %>
     </td>
   </tr>
   <tr>

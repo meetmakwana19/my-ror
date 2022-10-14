@@ -3,8 +3,10 @@
   <p>Find me in app/views/sections/edit.html.erb</p>
 </div>
 
+<% @page_title = "Edit Section" %>
+
 </br></br>
-<%= link_to("<< Back to List", sections_path, :class => "back-link")%>
+<%= link_to("<< Back to Sections List", sections_path(:page_id => @page.id), :class => "back-link")%>
 
 <div class="sections edit">
   <h2>Update section</h2>
@@ -12,7 +14,8 @@
   <%# form_for helper for dynamic form for sections edit/new action so no need
   to specify the method and url It's smart enough to know that the @section
   object is new/saved. %> <%# form_for(@section, :url => sections_path, :method
-  => "patch") do |f| %> <%= form_for(@section) do |f|%> <%= render(:partial =>
+  => "patch") do |f| %> 
+  <%= form_for(@section, :url => section_path(@section, :page_id => @page.id )) do |f|%> <%= render(:partial =>
   "form", :locals => {:f => f})%>
 
   <div class="form-buttons"><%= f.submit("Update section")%></div>

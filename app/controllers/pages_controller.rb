@@ -6,7 +6,7 @@ class PagesController < ApplicationController
   before_action :find_subject
   
   # by default this controller filter will be applied to methods but putting an only option.
-  before_action :find_subjects, :only => [:new, :create, :edit, :update]
+  # before_action :find_subjects, :only => [:new, :create, :edit, :update]
   # so before these methods, the find_subjects instance variable be set for all those methods.
 
   before_action :set_page_coount, :only => [:new, :create, :edit, :update]
@@ -29,6 +29,7 @@ class PagesController < ApplicationController
   
   def create
     @page = Page.new(page_params)
+    @page.subject = @subject
     if @page.save
       flash[:notice] = "Page created succcessfully"
       redirect_to(pages_path(:subject_id => @subject.id))
@@ -70,16 +71,16 @@ class PagesController < ApplicationController
 
   private
   def page_params
-    params.require(:page).permit(:name, :subject_id, :permalink, :position, :visible)
+    params.require(:page).permit(:name, :permalink, :position, :visible)
   end
 
   def find_subject
     @subject = Subject.find(params[:subject_id])
   end
 
-  def find_subjects
-    @subjects = Subject.sorted
-  end
+  # def find_subjects
+  #   @subjects = Subject.sorted
+  # end
 
   def set_page_coount 
     @page_count = Page.count

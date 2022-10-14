@@ -5,7 +5,8 @@
         <th>subject_id</th>
         <td>
             <%# f.text_field(:subject_id) %>
-            <%= f.select(:subject_id, @subjects.map {|s| [s.name, s.id]}) %>
+            <%# f.select(:subject_id, @subjects.map {|s| [s.name, s.id]}) %>
+            <%= f.object.subject.name%>
         </td>
     </tr>
     <tr>

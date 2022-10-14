@@ -3,16 +3,21 @@
   <p>Find me in app/views/sections/index.html.erb</p>
 </div>
 
+<% @page_title = "All Sections" %>
+
 </br>
 </br>
-<%= link_to("<< Back to menu", admin_path, :class => 'back-link')%> <%
-@page_title = " | All section" %>
+<%= link_to("<< Back to menu", admin_path, :class => 'back-link')%> 
+</br>
+</br>
+<%= link_to("<< Back to the pages", pages_path(:subject_id => @page.subject_id), :class => 'back-link')%> 
+<%# @page_title = " | All section" %>
 
 <div class="sections index">
   <h2>Sections</h2>
 
   <%# link_to("Add new section", "sections/new", :class => "action new") %> <%=
-  link_to("Add new section", new_section_path, :class => "action new") %>
+  link_to("Add new section", new_section_path(:page_id => @page.id), :class => "action new") %>
 
   <table class="listing" summary="section list">
     <tr class="header">
@@ -42,9 +47,9 @@
         <%# link_to("Show", "sections/#{section.id}", :action => "action show")
         %> <%# link_to("Show", {:controller => "sections", :action => "show",
         :id =? section.id}, :action => "action show") %> <%= link_to("Show",
-        section_path(section), :action => "action show")%> <%= link_to("Edit",
-        edit_section_path(section), :action => "action edit")%> <%=
-        link_to("Delete", delete_section_path(section), :action => "action
+        section_path(section, :page_id => @page.id), :action => "action show")%> <%= link_to("Edit",
+        edit_section_path(section, :page_id => @page.id), :action => "action edit")%> <%=
+        link_to("Delete", delete_section_path(section, :page_id => @page.id), :action => "action
         delete")%>
       </td>
     </tr>
