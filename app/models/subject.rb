@@ -1,5 +1,7 @@
 class Subject < ApplicationRecord
 
+    acts_as_list
+    
     # making a scope with name "visible"
     scope :visible, lambda {where(:visible => true)}
     scope :invisible, lambda {where(:visible => false)}

@@ -1,4 +1,7 @@
 class Section < ApplicationRecord
+
+    acts_as_list :scope => :subject
+
     # belongs_to :page, {:optional => true}
     belongs_to :page, optional: true
     # belongs_to :page, required: false

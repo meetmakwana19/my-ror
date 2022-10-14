@@ -1,5 +1,7 @@
 class Page < ApplicationRecord
         
+    acts_as_list :scope => :subject #will take in account the subjects that no page nos for a subject
+
     # completing one-to-many associations
     # optional is false by default 
     belongs_to :subject, {:optional => true} 

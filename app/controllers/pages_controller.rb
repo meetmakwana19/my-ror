@@ -9,7 +9,8 @@ class PagesController < ApplicationController
   # before_action :find_subjects, :only => [:new, :create, :edit, :update]
   # so before these methods, the find_subjects instance variable be set for all those methods.
 
-  before_action :set_page_coount, :only => [:new, :create, :edit, :update]
+  # remeber to run the :find_subject before this set_page_coount as then the subjects instance varibale will be set.
+  before_action :set_page_count, :only => [:new, :create, :edit, :update]
 
   def index
     #  @pages = Page.all
@@ -83,7 +84,9 @@ class PagesController < ApplicationController
   # end
 
   def set_page_coount 
-    @page_count = Page.count
+    # @page_count = Page.count #counting all pages
+    # just count the pages of the subject
+    @page_count = @subject.pages.count 
     if params[:action] == 'new' || params[:action] == 'create'
       @page_count += 1
     end
